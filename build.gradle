@@ -66,9 +66,3 @@ testlogger {
 test {
     useJUnitPlatform()
 }
-
-
-buildScan {
-  licenseAgreementUrl = "https://gradle.com/terms-of-service"
-  licenseAgree = "no"
-}
