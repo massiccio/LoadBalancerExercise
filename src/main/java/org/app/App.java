@@ -6,14 +6,13 @@ package org.app;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.logging.Logger;
 
 import org.lb.LoadBalancer;
 import org.lb.LoadBalancerImpl;
 import org.lb.policies.LBPolicyFactory;
 import org.lb.provider.DefaultProvider;
 import org.lb.provider.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class App {
 
@@ -22,7 +21,7 @@ public class App {
 	private static final int PROVIDERS = 10;
 	private static final int MAX_PROVIDERS = 7;
 
-	private static Logger logger = LoggerFactory.getLogger(App.class.getName());
+	private static Logger logger = Logger.getLogger(App.class.getName());
 
 	
 
