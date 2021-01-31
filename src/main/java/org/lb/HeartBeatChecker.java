@@ -1,14 +1,13 @@
 package org.lb;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import org.lb.provider.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class HeartBeatChecker implements Runnable {
 	
-	private static Logger logger = LoggerFactory.getLogger(HeartBeatChecker.class.getName());
+	private static Logger logger = Logger.getLogger(HeartBeatChecker.class.getName());
 
 	private final LoadBalancerImpl lb;
 
