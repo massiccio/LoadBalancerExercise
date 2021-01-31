@@ -5,10 +5,10 @@ plugins {
 gradleEnterprise {
   buildScan {
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "no"
+        termsOfServiceAgree = "yes"
     }
     buildScan {
-        publishOnFailureIf(true == false)
+        publishOnFailure()
         uploadInBackground = false
     }
 }
