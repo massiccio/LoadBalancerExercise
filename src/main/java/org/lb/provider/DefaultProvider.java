@@ -3,16 +3,14 @@ package org.lb.provider;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
 
 /**
  * Default provider
  */
 public class DefaultProvider implements Provider {
 
-	private static Logger logger = LoggerFactory.getLogger(DefaultProvider.class);
+	private static Logger logger = Logger.getLogger(DefaultProvider.class.getName());
 
 	private static final int HEARTBEATS_OK = 2;
 
@@ -100,7 +98,7 @@ public class DefaultProvider implements Provider {
 	public boolean disable() {
 		this.enabled.set(false);
 		this.okChecksAfterFailure = 0;
-		logger.warn("Disabled provider " + getId());
+		logger.warning("Disabled provider " + getId());
 		return true;
 	}
 
