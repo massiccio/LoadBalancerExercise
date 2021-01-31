@@ -1,14 +1,13 @@
 package org.app;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.logging.Logger;
 
 import org.lb.LoadBalancer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Utils {
 
-	private static Logger logger = LoggerFactory.getLogger(Utils.class.getName());
+	private static Logger logger = Logger.getLogger(Utils.class.getName());
 	
 	
 	private Utils() {
