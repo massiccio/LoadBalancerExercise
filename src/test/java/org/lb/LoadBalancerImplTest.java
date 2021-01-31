@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
+import java.util.logging.Logger;
 
 import org.app.Utils;
 import org.junit.jupiter.api.AfterAll;
@@ -21,12 +22,10 @@ import org.junit.jupiter.api.Timeout;
 import org.lb.policies.LBPolicyFactory;
 import org.lb.provider.DefaultProvider;
 import org.lb.provider.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class LoadBalancerImplTest {
 	
-	private static Logger logger = LoggerFactory.getLogger(LoadBalancerImplTest.class.getName());
+	private static Logger logger = Logger.getLogger(LoadBalancerImplTest.class.getName());
 
 	private static final int MAX_PROVIDERS = 10;
 

@@ -25,14 +25,8 @@ dependencies {
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-    implementation 'org.slf4j:slf4j-simple:1.8.0-beta4'
+    //implementation 'org.slf4j:slf4j-simple:1.8.0-beta4'
 }
-
-application {
-    // Define the main class for the application.
-    mainClass = 'org.app.App'
-}
-
 
 // Define the main class for the application.
 mainClassName = 'org.app.App'

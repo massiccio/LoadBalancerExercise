@@ -8,11 +8,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Logger;
 
 import org.lb.policies.LBPolicyFactory;
 import org.lb.provider.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class LoadBalancerImpl implements LoadBalancer {
 
@@ -21,7 +20,7 @@ public class LoadBalancerImpl implements LoadBalancer {
 
 	private static final int HEARTBEAT_INTERVAL_SECONDS = 2;
 
-	private static Logger logger = LoggerFactory.getLogger(LoadBalancerImpl.class.getName());
+	private static Logger logger = Logger.getLogger(LoadBalancerImpl.class.getName());
 
 	/** Capacity of each provider. */
 	private final int maxLoad;
@@ -94,11 +93,6 @@ public class LoadBalancerImpl implements LoadBalancer {
 		// uses a cached value inside enabledProviders()
 		final int enabled = this.manager.enabledProviders();
 		if (pending >= enabled * this.maxLoad)  {
-//			StringBuilder sb = new StringBuilder();
-//			sb.append("Pending jobs: ").append(pending);
-//			sb.append(", enabled providers: ").append(enabled);
-//			sb.append(", max load/provider: ").append(this.maxLoad).append("\n");
-//			logger.warn(sb.toString());
 			return true;
 		}
 		return false;
@@ -114,7 +108,7 @@ public class LoadBalancerImpl implements LoadBalancer {
 	public Optional<String> get() {
 		if (isStarted() == false) {
 			this.metrics.reject();
-			logger.error("Load balancer not started yet. Call start() first");
+			logger.severe("Load balancer not started yet. Call start() first");
 //			throw new IllegalStateException();
 			return Optional.empty();
 		}
@@ -133,7 +127,7 @@ public class LoadBalancerImpl implements LoadBalancer {
 			// step 8, page 9: deal with scenario where the hearbeat removes all nodes after
 			// the check above
 			this.metrics.reject();
-			logger.warn("No provider found");
+			logger.warning("No provider found");
 //			throw new OverloadException("System overloaded, no provider available.");
 			return Optional.empty();
 		}
@@ -212,7 +206,7 @@ public class LoadBalancerImpl implements LoadBalancer {
 		if (this.started.compareAndSet(true, false)) {
 			this.heartBeatExecutorService.shutdown();
 
-			logger.warn("Load balancer stopped.");
+			logger.warning("Load balancer stopped.");
 		}
 	}
 

@@ -6,15 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.logging.Logger;
 
 import org.lb.policies.LBPolicy;
 import org.lb.provider.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class ProvidersManager implements LBPolicy {
 
-	protected static Logger logger = LoggerFactory.getLogger(ProvidersManager.class.getName());
+	protected static Logger logger = Logger.getLogger(ProvidersManager.class.getName());
 
 	/** Map of registered providers. */
 	private Map<Integer, Provider> registered;
@@ -29,7 +28,7 @@ public abstract class ProvidersManager implements LBPolicy {
 	 * added, providers failing, and providers being included/excluded manually).
 	 */
 	protected ArrayList<Provider> enabled;
-	
+
 	/** Cache the number of enabled providers. */
 	private volatile int enabledProviders;
 
@@ -115,7 +114,7 @@ public abstract class ProvidersManager implements LBPolicy {
 
 		final int size = enabled.size();
 		if (size == 0) {
-			logger.warn("There are no enabled providers.");
+			logger.warning("There are no enabled providers.");
 		} else {
 			if (size == 1) {
 				logger.info("1 provider is enabled");
